@@ -42,7 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     input.addEventListener('change', (e) => {
+        buttonControl(btn, true)
         e.target.value = ''
+    })
+
+    input.addEventListener('input', (e) => {
+        buttonControl(btn, true)
     })
 
     document.addEventListener('keydown', function (event) {
