@@ -7,3 +7,13 @@ export const getLanguage = () => {
     const newUserLang = userLang.split('-')[0]
     return newUserLang
 }
+
+export const cleanerItem = (element) => {
+    element.innerHTML = ''
+}
+
+export const cleanerObj = (obj) => {
+    for (let key in Object.keys(obj)) {
+        obj[key] = ''
+    }
+}

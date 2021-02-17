@@ -1,6 +1,6 @@
 import { getWeather } from "./api.js"
 import { createItem } from "./components.js"
-import { buttonControl, getLanguage } from "./tools.js"
+import { buttonControl, getLanguage, cleanerItem, cleanerObj  } from "./tools.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const row = document.querySelector('.roof')
@@ -33,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         createItem(row, 'showSpinner')
         const respose = getWeather(lat, lon, lang, cityName)
             respose.then(date => {
+                cleanerItem(row)
                 createItem(row, date, cityName, locales)
             })
         buttonControl(btn, true)
+        cleanerObj(state)
     })
 
     document.addEventListener('keydown', function (event) {
