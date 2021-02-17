@@ -23,5 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
         state.lon = state.place.geometry.location.lng()
     })
 
+    document.addEventListener('keydown', function (event) {
+        if (event.code == 'Enter' || event.code == 'NumpadEnter') {
+            event.preventDefault()
+        }
+    })
+
     getWeather()
 })
