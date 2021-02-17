@@ -12,13 +12,13 @@ const daysForecast = (arr, locales) => {
 }
 
 export const createItem = (tag, data, cityName, locales) => {
-    const {json} = data
+    const {json, photo} = data
     const days = daysForecast(json.daily, locales)
     tag.innerHTML = `
         <div class="card p-2">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img class="img-fluid" src="" alt="">
+                    <img class="img-fluid" src=${photo} alt="">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
