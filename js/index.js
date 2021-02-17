@@ -1,5 +1,6 @@
 import { getWeather } from "./api.js"
 import { createItem } from "./components.js"
+import { createChart } from "./myChart.js"
 import { buttonControl, getLanguage, cleanerItem, cleanerObj  } from "./tools.js"
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const respose = getWeather(lat, lon, lang, cityName)
             respose.then(date => {
                 cleanerItem(row)
-                createItem(row, date, cityName, locales)
+                createItem(row, date, cityName, locales, createChart)
             })
         buttonControl(btn, true)
         cleanerObj(state)

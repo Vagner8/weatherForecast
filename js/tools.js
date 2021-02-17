@@ -17,3 +17,7 @@ export const cleanerObj = (obj) => {
         obj[key] = ''
     }
 }
+
+export const createDeta = (dt, locales) => {
+    return new Date(dt * 1000).toLocaleString(locales, { day: 'numeric', month: 'numeric' })
+}

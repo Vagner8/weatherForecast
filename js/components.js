@@ -1,8 +1,10 @@
+import { createDeta } from './tools.js'
+
 const daysForecast = (arr, locales) => {
     return arr.map(item => `
     <div class="col">
         <span class="badge bg-primary">
-            ${new Date(item.dt * 1000).toLocaleString(locales, { day: 'numeric', month: 'numeric' })}
+            ${createDeta(item.dt, locales)}
         </span>
         <p>
             ${Math.round(item.temp.day)} °C
@@ -11,7 +13,7 @@ const daysForecast = (arr, locales) => {
     `).join('')
 }
 
-export const createItem = (tag, data, cityName, locales) => {
+export const createItem = (tag, data, cityName, locales, createChart) => {
     if (data === 'showSpinner') {
         tag.innerHTML = `
             <div class="d-flex align-items-center">
@@ -35,9 +37,14 @@ export const createItem = (tag, data, cityName, locales) => {
                         <div class="row">
                             ${days}
                         </div>
+                        <div class="row">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     `
+    console.log(json)
+    createChart(json.daily, locales)
 }
