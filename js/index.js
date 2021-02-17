@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cleanerObj(state)
     })
 
+    input.addEventListener('change', (e) => {
+        e.target.value = ''
+    })
+
     document.addEventListener('keydown', function (event) {
         if (event.code == 'Enter' || event.code == 'NumpadEnter') {
             event.preventDefault()
