@@ -1,3 +1,5 @@
+import { getWeather } from "./api.js"
+
 document.addEventListener("DOMContentLoaded", () => {
     const row = document.querySelector('.roof')
     const btn = document.querySelector('.btn')
@@ -20,4 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         state.lat = state.place.geometry.location.lat()
         state.lon = state.place.geometry.location.lng()
     })
+
+    getWeather()
 })
