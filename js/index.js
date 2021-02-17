@@ -1,6 +1,6 @@
 import { getWeather } from "./api.js"
 import { createItem } from "./components.js"
-import { buttonControl } from "./tools.js"
+import { buttonControl, getLanguage } from "./tools.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const row = document.querySelector('.roof')
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lon: '',
         place: '',
         cityName: '',
+        lang: getLanguage(),
         locales: navigator.language || navigator.userLanguage
     }
 
