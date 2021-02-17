@@ -1,4 +1,5 @@
 const apiKeyWeather = '4ef700dfdc666439b2990592c804906d'
+const baseURL = 'https://api.openweathermap.org/data/2.5/onecall?'
 
 export const getWeather = async (lat, lon, lang) => {
     try {
