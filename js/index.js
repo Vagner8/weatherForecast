@@ -1,4 +1,5 @@
 import { getWeather } from "./api.js"
+import { createItem } from "./components.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const row = document.querySelector('.roof')
@@ -16,11 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
-        buttonControl(btn, false)
         state.place = autocomplete.getPlace()
         state.cityName = state.place.name
         state.lat = state.place.geometry.location.lat()
         state.lon = state.place.geometry.location.lng()
+    })
+
+    btn.addEventListener('click', () => {
+        const {lat, lon, cityName, lang, locales} = state
+        const respose = getWeather(lat, lon, lang, cityName)
+            respose.then(date => {
+                createItem(row, date, cityName, locales)
+            })
     })
 
     document.addEventListener('keydown', function (event) {
@@ -28,6 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault()
         }
     })
-
-    getWeather()
 })
