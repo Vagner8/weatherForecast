@@ -12,6 +12,15 @@ const daysForecast = (arr, locales) => {
 }
 
 export const createItem = (tag, data, cityName, locales) => {
+    if (data === 'showSpinner') {
+        tag.innerHTML = `
+            <div class="d-flex align-items-center">
+                <strong>Loading...</strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+        `
+        return
+    }
     const {json, photo} = data
     const days = daysForecast(json.daily, locales)
     tag.innerHTML = `

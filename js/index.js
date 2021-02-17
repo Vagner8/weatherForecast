@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btn.addEventListener('click', () => {
         const {lat, lon, cityName, lang, locales} = state
+        createItem(row, 'showSpinner')
         const respose = getWeather(lat, lon, lang, cityName)
             respose.then(date => {
                 createItem(row, date, cityName, locales)
